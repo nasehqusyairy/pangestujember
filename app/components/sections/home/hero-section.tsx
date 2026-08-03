@@ -1,5 +1,6 @@
 import { Button } from "~/components/ui/button";
 import { MessageSquareText } from 'lucide-react'
+import { AnimatedSection } from "./animated-section";
 
 export function HeroSection() {
     return (
@@ -11,8 +12,7 @@ export function HeroSection() {
         }}>
             <div className="container py-12 mx-auto h-full">
                 <div className="grid lg:grid-cols-7 h-full">
-                    <div className="lg:col-span-4 h-full bg-primary/50 backdrop-blur-sm border rounded-lg border-white/10 lg:p-xl p-8">
-
+                    <AnimatedSection className="lg:col-span-4 h-full bg-primary/50 backdrop-blur-sm border rounded-lg border-white/10 lg:p-xl p-8" delay={0.1}>
                         <h1 className="uppercase text-primary-foreground mb-4 text-xl">Warisan Kuliner Indonesia</h1>
                         <h2 className="text-primary-foreground text-4xl lg:text-6xl mb-8 font-bold">
                             Cita Rasa Otentik di Jember
@@ -28,7 +28,7 @@ export function HeroSection() {
                                 <Button variant={'outline'} className={'border-white text-white'} size={'lg'}>Lihat Menu</Button>
                             </div>
                         </div>
-                    </div>
+                    </AnimatedSection>
                 </div>
             </div>
         </div>

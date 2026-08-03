@@ -1,15 +1,16 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import aboutImage from "~/images/about.png"
+import { AnimatedSection } from "./animated-section";
 
 export function AboutSection() {
     return (
         <div className="container mx-auto py-24">
             <div className="grid lg:grid-cols-5 gap-24 items-center">
-                <div className="col-span-2 hidden lg:block">
+                <AnimatedSection className="col-span-2 hidden lg:block" delay={0.1}>
                     <img src={aboutImage} alt="About Image" className="w-full" />
-                </div>
-                <div className="col-span-3">
+                </AnimatedSection>
+                <AnimatedSection className="col-span-3" delay={0.2}>
                     <h1 className="text-secondary uppercase mb-4 text-xl">Tentang Kami</h1>
                     <h2 className="text-primary text-4xl mb-8 font-bold">Tradisi yang Tetap Terjaga</h2>
                     <p className=" mb-8 text-xl">
@@ -23,7 +24,7 @@ export function AboutSection() {
                         percaya bahwa kualitas rasa dimulai dari integritas bahan baku dan ketulusan dalam mengolahnya.
                     </p>
                     <Link to={'#'} className="underline text-secondary flex gap-2 items-center font-heading uppercase">Lihat Selengkapnya <ArrowRight /></Link>
-                </div>
+                </AnimatedSection>
             </div>
         </div>
     )
