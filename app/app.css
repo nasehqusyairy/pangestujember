@@ -1,15 +1,177 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+/* Menggunakan font baru sesuai spesifikasi brand */
+@import "@fontsource/newsreader"; /* Pastikan paket ini diinstal untuk Font Serif */
+@import "@fontsource/work-sans";  /* Pastikan paket ini diinstal untuk Font Sans */
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    /* Tipografi & Font Family */
+    --font-heading: 'Newsreader', serif;
+    --font-sans: 'Newsreader', serif;
+    /* --font-sans: 'Work Sans', sans-serif; */
+
+    /* Custom Spacing Token Pangestu Culinary Heritage */
+    --spacing-xs: 4px;
+    --spacing-base: 8px;
+    --spacing-sm: 12px;
+    --spacing-md: 24px;
+    --spacing-lg: 48px;
+    --spacing-xl: 80px;
+    --spacing-gutter: 24px;
+    --spacing-margin-mobile: 16px;
+    --spacing-margin-desktop: 64px;
+
+    /* Konfigurasi Radius spesifik dari DESIGN.md */
+    --radius-sm: 0.125rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+
+    /* Mapping Utility Warna Shadcn ke CSS Variables */
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
 }
 
-html,
-body {
-  @apply bg-white dark:bg-gray-950;
+:root {
+    /* Base Layers & Backgrounds */
+    --background: oklch(0.985 0.005 30);                /* #fcf9f8 (Tertiary Cream) */
+    --foreground: #414844;               /* #1b1c1c (Neutral Charcoal) */
+    
+    /* Card menggunakan Surface Container Lowest */
+    --card: #F6F3F2;                               /* #ffffff */
+    --card-foreground: oklch(0.187 0.003 200);          /* #1b1c1c */
+    
+    --popover: oklch(0.985 0.005 30);                   /* #fcf9f8 */
+    --popover-foreground: oklch(0.187 0.003 200);       /* #1b1c1c */
+    
+    /* Brand Colors (Primary Forest Green & Secondary Teak Wood) */
+    --primary: hsl(146, 43%, 25%);                  /* #012d1d (Forest Green) */
+    --primary-foreground: oklch(1 0 0);                 /* #ffffff */
+    
+    --secondary: oklch(0.448 0.036 54);                 /* #79573a (Teak Wood) */
+    --secondary-foreground: oklch(1 0 0);               /* #ffffff */
+    
+    /* Muted & Variant */
+    --muted: oklch(0.912 0.002 45);                     /* #e4e2e1 (surface-variant) */
+    --muted-foreground: oklch(0.381 0.012 154);         /* #414844 (on-surface-variant) */
+    
+    /* Accent menggunakan Surface Container High */
+    --accent: oklch(0.931 0.002 45);                    /* #eae7e7 */
+    --accent-foreground: oklch(0.245 0.038 158);        /* #012d1d */
+    
+    /* System & Borders */
+    --destructive: oklch(0.499 0.223 27.5);             /* #ba1a1a (Error) */
+    --destructive-foreground: oklch(1 0 0);
+    
+    --border: oklch(0.814 0.005 145);                   /* #c1c8c2 (outline-variant) */
+    --input: oklch(0.814 0.005 145);                    /* #c1c8c2 */
+    --ring: oklch(0.468 0.034 159);                     /* #3f6653 (surface-tint) */
+    
+    /* Radius dasar shadcn disesuaikan ke rounded.DEFAULT */
+    --radius: 0.25rem; 
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+    /* Chart Colors (Disesuaikan bertingkat dari gelap ke terang) */
+    --chart-1: oklch(0.245 0.038 158);
+    --chart-2: oklch(0.324 0.036 158);
+    --chart-3: oklch(0.448 0.036 54);
+    --chart-4: oklch(0.602 0.041 54);
+    --chart-5: oklch(0.912 0.002 45);
+
+    /* Sidebar Styles */
+    --sidebar: oklch(0.965 0.003 35);                   /* #f0eded (surface-container) */
+    --sidebar-foreground: oklch(0.187 0.003 200);
+    --sidebar-primary: oklch(0.245 0.038 158);
+    --sidebar-primary-foreground: oklch(1 0 0);
+    --sidebar-accent: oklch(0.931 0.002 45);
+    --sidebar-accent-foreground: oklch(0.245 0.038 158);
+    --sidebar-border: oklch(0.814 0.005 145);
+    --sidebar-ring: oklch(0.468 0.034 159);
+}
+
+.dark {
+    /* Skema Dark Mode opsional dengan pendekatan inversi tonal */
+    --background: oklch(0.264 0.001 10);                /* #303030 (inverse-surface) */
+    --foreground: oklch(0.957 0.003 30);                /* #f3f0f0 (inverse-on-surface) */
+    
+    --card: oklch(0.211 0.001 10);
+    --card-foreground: oklch(0.957 0.003 30);
+    
+    --popover: oklch(0.264 0.001 10);
+    --popover-foreground: oklch(0.957 0.003 30);
+    
+    --primary: oklch(0.803 0.033 154);                  /* #a5d0b9 (inverse-primary) */
+    --primary-foreground: oklch(0.245 0.038 158);
+    
+    --secondary: oklch(0.781 0.036 62);                 /* #eabe9a (secondary-fixed-dim) */
+    --secondary-foreground: oklch(0.245 0.038 158);
+    
+    --muted: oklch(0.381 0.012 154);
+    --muted-foreground: oklch(0.814 0.005 145);
+    
+    --accent: oklch(0.381 0.012 154);
+    --accent-foreground: oklch(0.957 0.003 30);
+    
+    --destructive: oklch(0.655 0.201 24.3);
+    --destructive-foreground: oklch(1 0 0);
+    
+    --border: oklch(1 0 0 / 15%);
+    --input: oklch(1 0 0 / 20%);
+    --ring: oklch(0.803 0.033 154);
+    
+    --sidebar: oklch(0.211 0.001 10);
+    --sidebar-foreground: oklch(0.957 0.003 30);
+    --sidebar-border: oklch(1 0 0 / 15%);
+    --sidebar-ring: oklch(0.803 0.033 154);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans; /* Secara default menggunakan Work Sans */
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading; /* Judul secara otomatis menggunakan Newsreader */
+  }
+
+  .container{
+    @apply px-4 lg:px-12
   }
 }
