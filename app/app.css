@@ -68,7 +68,7 @@
 :root {
     /* Base Layers & Backgrounds */
     --background: oklch(0.985 0.005 30);                /* #fcf9f8 (Tertiary Cream) */
-    --foreground: #414844;               /* #1b1c1c (Neutral Charcoal) */
+    --foreground: hsl(146, 5%, 27%);               /* #1b1c1c (Neutral Charcoal) */
     
     /* Card menggunakan Surface Container Lowest */
     --card: #F6F3F2;                               /* #ffffff */
@@ -81,12 +81,12 @@
     --primary: hsl(146, 43%, 25%);                  /* #012d1d (Forest Green) */
     --primary-foreground: oklch(1 0 0);                 /* #ffffff */
     
-    --secondary: oklch(0.448 0.036 54);                 /* #79573a (Teak Wood) */
-    --secondary-foreground: oklch(1 0 0);               /* #ffffff */
+    --secondary: #655042;                 /* #79573a (Teak Wood) */
+    --secondary-foreground: #FFD1AC;               /* #ffffff */
     
     /* Muted & Variant */
     --muted: oklch(0.912 0.002 45);                     /* #e4e2e1 (surface-variant) */
-    --muted-foreground: oklch(0.381 0.012 154);         /* #414844 (on-surface-variant) */
+    --muted-foreground: hsl(137, 5%, 26%);         /* #414844 (on-surface-variant) */
     
     /* Accent menggunakan Surface Container High */
     --accent: oklch(0.931 0.002 45);                    /* #eae7e7 */
@@ -173,5 +173,13 @@
 
   .container{
     @apply px-4 lg:px-12
+  }
+
+  .nav-lg a.active{
+    @apply pb-2 border-b border-primary font-bold text-primary
+  }
+
+  .nav-sm a.active, .nav-sm a.active:hover{
+    @apply bg-primary! text-primary-foreground!
   }
 }

@@ -2,14 +2,14 @@ import { ArrowRight, ShoppingBasket } from "lucide-react";
 import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "~/components/ui/card";
-import { AnimatedSection } from "./animated-section";
+import { AnimatedSection } from "../../animated-section";
 
 export function MenuSection() {
     return (
-        <div className="bg-card py-24">
+        <section className="bg-card py-24">
             <AnimatedSection className="text-center" delay={0.1}>
                 <h1 className="text-secondary text-heading text-xl uppercase mb-4">Menu</h1>
-                <h2 className="text-primary text-heading text-4xl mb-12 font-bold">Favorit Pelanggan</h2>
+                <h2 className="text-primary text-heading text-4xl mb-12">Favorit Pelanggan</h2>
             </AnimatedSection>
             <div className="container mx-auto">
                 <div className="grid lg:grid-cols-3 gap-12 mb-24">
@@ -91,6 +91,6 @@ export function MenuSection() {
                     </Link>
                 </p>
             </AnimatedSection>
-        </div>
+        </section>
     )
 }

@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
 import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from "~/components/ui/item";
-import { AnimatedSection } from "./animated-section";
+import { AnimatedSection } from "../../animated-section";
 
 export function CareerSection() {
     return (
@@ -10,11 +10,11 @@ export function CareerSection() {
             <div className="container mx-auto">
                 <AnimatedSection className="text-left" delay={0.1}>
                     <h1 className="uppercase text-secondary text-xl mb-4">Karir</h1>
-                    <h1 className="text-primary font-bold text-4xl mb-12">Bergabung Bersama Kami</h1>
+                    <h1 className="text-primary text-4xl mb-12">Bergabung Bersama Kami</h1>
                 </AnimatedSection>
                 <div className="grid gap-8 mb-24">
                     <AnimatedSection delay={0.1}>
-                        <Item variant="outline" className="bg-white rounded-none p-12">
+                        <Item variant="outline" className="bg-white p-12">
                             <ItemContent className="gap-2">
                                 <ItemTitle className="text-2xl text-primary">Kepala Koki</ItemTitle>
                                 <ItemDescription className="text-lg">
@@ -33,7 +33,7 @@ export function CareerSection() {
                         </Item>
                     </AnimatedSection>
                     <AnimatedSection delay={0.2}>
-                        <Item variant="outline" className="bg-white rounded-none p-12">
+                        <Item variant="outline" className="bg-white p-12">
                             <ItemContent className="gap-2">
                                 <ItemTitle className="text-2xl text-primary">Manajer Lantai</ItemTitle>
                                 <ItemDescription className="text-lg">
@@ -52,7 +52,7 @@ export function CareerSection() {
                         </Item>
                     </AnimatedSection>
                     <AnimatedSection delay={0.3}>
-                        <Item variant="outline" className="bg-white rounded-none p-12">
+                        <Item variant="outline" className="bg-white p-12">
                             <ItemContent className="gap-2">
                                 <ItemTitle className="text-2xl text-primary">Barista</ItemTitle>
                                 <ItemDescription className="text-lg">

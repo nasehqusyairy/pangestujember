@@ -1,7 +1,7 @@
 import { ArrowRight, Clock, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "~/components/ui/card";
-import { AnimatedSection } from "./animated-section";
+import { AnimatedSection } from "../../animated-section";
 
 export function LocationSection() {
     return (
@@ -9,7 +9,7 @@ export function LocationSection() {
             <div className="container mx-auto">
                 <AnimatedSection className="text-center" delay={0.1}>
                     <h1 className="uppercase text-xl text-secondary mb-4">Lokasi</h1>
-                    <h2 className="text-primary text-4xl font-bold mb-12">Oulet Kami</h2>
+                    <h2 className="text-primary text-4xl mb-12">Oulet Kami</h2>
                 </AnimatedSection>
                 <div className="grid lg:grid-cols-3 gap-12 mb-24">
                     <AnimatedSection delay={0.1}>

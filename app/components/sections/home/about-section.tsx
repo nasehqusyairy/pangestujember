@@ -1,18 +1,17 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
-import aboutImage from "~/images/about.png"
-import { AnimatedSection } from "./animated-section";
+import { AnimatedSection } from "../../animated-section";
 
 export function AboutSection() {
     return (
-        <div className="container mx-auto py-24">
+        <section className="container mx-auto py-24">
             <div className="grid lg:grid-cols-5 gap-24 items-center">
                 <AnimatedSection className="col-span-2 hidden lg:block" delay={0.1}>
-                    <img src={aboutImage} alt="About Image" className="w-full" />
+                    <img src={'/images/about.png'} alt="About Image" className="w-full" />
                 </AnimatedSection>
                 <AnimatedSection className="col-span-3" delay={0.2}>
                     <h1 className="text-secondary uppercase mb-4 text-xl">Tentang Kami</h1>
-                    <h2 className="text-primary text-4xl mb-8 font-bold">Tradisi yang Tetap Terjaga</h2>
+                    <h2 className="text-primary text-4xl mb-8">Tradisi yang Tetap Terjaga</h2>
                     <p className=" mb-8 text-xl">
                         Restoran Pangestu lahir dari keinginan sederhana: melestarikan resep-resep keluarga
                         yang telah dinikmati lintas generasi. Di Jember, kami bukan sekadar tempat makan,
@@ -26,6 +25,6 @@ export function AboutSection() {
                     <Link to={'#'} className="underline text-secondary flex gap-2 items-center font-heading uppercase">Lihat Selengkapnya <ArrowRight /></Link>
                 </AnimatedSection>
             </div>
-        </div>
+        </section>
     )
 }

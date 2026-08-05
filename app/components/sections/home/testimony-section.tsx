@@ -1,6 +1,6 @@
 import { ArrowRight, Quote } from "lucide-react";
 import { Link } from "react-router";
-import { AnimatedSection } from "./animated-section";
+import { AnimatedSection } from "../../animated-section";
 
 export function TestimonySection() {
     return (
@@ -8,7 +8,7 @@ export function TestimonySection() {
             <div className="container mx-auto">
                 <AnimatedSection className="text-center" delay={0.1}>
                     <h1 className="text-primary-foreground uppercase text-xl mb-4">Testimoni</h1>
-                    <h1 className="text-primary-foreground text-4xl font-bold mb-24">Apa Kata Mereka?</h1>
+                    <h1 className="text-primary-foreground text-4xl mb-24">Apa Kata Mereka?</h1>
                 </AnimatedSection>
                 <div className="grid lg:grid-cols-3 gap-12 mb-24">
                     <AnimatedSection className="grid gap-8 text-primary-foreground" delay={0.1}>

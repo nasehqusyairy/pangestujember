@@ -1,8 +1,9 @@
 import logo from "~/images/logo.png"
 import { Button, buttonVariants } from "./ui/button";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import { Menu, ShoppingCart } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
+import { navlinks } from "~/lib/data";
 
 export function Navbar() {
     return (
@@ -13,13 +14,10 @@ export function Navbar() {
                         <img src={logo} alt="Logo" className="size-14" />
                         <span>Pangestu</span>
                     </div>
-                    <div className="navigations hidden lg:flex gap-4 font-heading uppercase items-center">
-                        <Link className="pb-2 border-b border-primary font-bold text-primary" to={'#'}>Beranda</Link>
-                        <Link to={'#'}>Tentang</Link>
-                        <Link to={'#'}>Menu</Link>
-                        <Link to={'#'}>Outlet</Link>
-                        <Link to={'#'}>Testimoni</Link>
-                        <Link to={'#'}>Karir</Link>
+                    <div className="nav-lg hidden lg:flex gap-4 font-heading uppercase items-center">
+                        {navlinks.map(el => (
+                            <NavLink key={`nav-lg-${el.label}`} to={el.href}>{el.label}</NavLink>
+                        ))}
                     </div>
                     <div className="action flex gap-2">
                         <DropdownMenu>
@@ -30,25 +28,10 @@ export function Navbar() {
                             })}>
                                 <Menu />
                             </DropdownMenuTrigger>
-                            <DropdownMenuContent>
-                                <DropdownMenuItem className={"bg-primary text-primary-foreground"}>
-                                    Beranda
-                                </DropdownMenuItem>
-                                <DropdownMenuItem>
-                                    Tentang
-                                </DropdownMenuItem>
-                                <DropdownMenuItem>
-                                    Menu
-                                </DropdownMenuItem>
-                                <DropdownMenuItem>
-                                    Outlet
-                                </DropdownMenuItem>
-                                <DropdownMenuItem>
-                                    Testimoni
-                                </DropdownMenuItem>
-                                <DropdownMenuItem>
-                                    Karir
-                                </DropdownMenuItem>
+                            <DropdownMenuContent className={'nav-sm'}>
+                                {navlinks.map(el => (
+                                    <DropdownMenuItem key={`nav-sm-${el.label}`} render={<NavLink to={el.href}>{el.label}</NavLink>} />
+                                ))}
                             </DropdownMenuContent>
                         </DropdownMenu>
                         <Button size={'icon'} className={"lg:hidden"}>

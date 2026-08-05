@@ -1,10 +1,10 @@
 import { Button } from "~/components/ui/button";
 import { MessageSquareText } from 'lucide-react'
-import { AnimatedSection } from "./animated-section";
+import { AnimatedSection } from "../../animated-section";
 
 export function HeroSection() {
     return (
-        <div style={{
+        <section style={{
             backgroundImage: "linear-gradient(rgba(1, 45, 29, 0.2), rgba(1, 45, 29, 0.2)), url(/images/hero.png)",
             backgroundSize: 'cover',
             backgroundPosition: 'center',
@@ -31,6 +31,6 @@ export function HeroSection() {
                     </AnimatedSection>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
