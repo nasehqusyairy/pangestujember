@@ -38,7 +38,7 @@ export default function About() {
                         <p className="text-xl mb-4">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate unde quo assumenda quos id vero pariatur, ipsum iste at possimus esse repellendus nam corporis laboriosam quibusdam atque voluptas aut ut. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, dolor nisi? Est neque quam vero distinctio itaque quaerat deleniti necessitatibus possimus sit temporibus, eius enim, nemo magni laudantium impedit aut. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt similique qui eaque error earum, laudantium quam eum harum quasi voluptatibus provident aut neque reprehenderit, sapiente beatae dolore iste laborum accusamus?
                         </p>
-                        <p className="text-xl text-foreground/80 border-secondary border-s-4 italic ps-4">
+                        <p className="text-xl text-foreground/80 border-secondary-foreground border-s-4 italic ps-4">
                             "
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque pariatur laborum officiis odit deleniti ratione sit quam omnis! Corporis quidem saepe aliquid cum fugit? Commodi natus maxime iusto odio libero.
                             "
