@@ -10,10 +10,10 @@ export function Navbar() {
         <div className="relative h-16">
             <div className="fixed top-0 w-full bg-white shadow z-40">
                 <div className="container mx-auto flex justify-between py-2 items-center">
-                    <div className="brand flex gap-2 items-center font-heading text-2xl text-primary">
+                    <Link to={'/'} className="brand flex gap-2 items-center font-heading text-2xl text-primary">
                         <img src={logo} alt="Logo" className="size-14" />
                         <span>Pangestu</span>
-                    </div>
+                    </Link>
                     <div className="nav-lg hidden lg:flex gap-4 font-heading uppercase items-center">
                         {navlinks.map(el => (
                             <NavLink key={`nav-lg-${el.label}`} to={el.href}>{el.label}</NavLink>
@@ -37,7 +37,7 @@ export function Navbar() {
                         <Button size={'icon'} className={"lg:hidden"}>
                             <ShoppingCart />
                         </Button>
-                        <Button size={'lg'} className={'hidden lg:block'}>Pesan Sekarang</Button>
+                        <Button size={'lg'} className={'hidden lg:block'}>Lihat Keranjang</Button>
                     </div>
                 </div>
             </div>

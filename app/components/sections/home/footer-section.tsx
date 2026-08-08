@@ -15,7 +15,7 @@ export function FooterSection() {
     return (
         <footer className="bg-primary text-primary-foreground pt-16 pb-8">
             <div className="container mx-auto">
-                <div className="grid md:grid-cols-5 gap-12 pb-12 border-b border-white/10">
+                <div className="grid md:grid-cols-5 gap-8 pb-12 border-b border-white/10">
 
                     {/* Kolom 1: Branding */}
                     <div className="lg:col-span-2">

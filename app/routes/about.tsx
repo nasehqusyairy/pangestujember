@@ -7,7 +7,7 @@ export default function About() {
             <Jumbotron title="Tentang Kami" />
 
             <section className="container mx-auto pt-24 pb-12">
-                <div className="grid lg:grid-cols-5 gap-12 items-center">
+                <div className="grid lg:grid-cols-5 gap-8 items-center">
                     <div className="col-span-2 hidden lg:block">
                         <img src='/images/about.png' alt="About Image" className="w-full rounded-lg" />
                     </div>
@@ -31,7 +31,7 @@ export default function About() {
             </section>
 
             <section className="container mx-auto py-12">
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div className="grid lg:grid-cols-2 gap-8 items-center">
                     <div>
                         <h2 className="uppercase text-secondary text-xl mb-4">Motivasi</h2>
                         <h3 className="text-primary text-4xl mb-8">The Roots of Pangestu</h3>
@@ -51,7 +51,7 @@ export default function About() {
                 </div>
             </section>
 
-            <section className="py-24 bg-card">
+            <section className="py-8 bg-card">
                 <div className="container mx-auto">
                     <div className="text-center">
                         <h2 className="uppercase text-secondary text-xl mb-4">Komitmen</h2>

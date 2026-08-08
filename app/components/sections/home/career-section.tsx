@@ -6,13 +6,13 @@ import { AnimatedSection } from "../../animated-section";
 
 export function CareerSection() {
     return (
-        <section id="career" className="py-24 bg-card">
+        <section id="career" className="py-8 bg-card">
             <div className="container mx-auto">
                 <AnimatedSection className="text-left" delay={0.1}>
                     <h1 className="uppercase text-secondary text-xl mb-4">Karir</h1>
                     <h1 className="text-primary text-4xl mb-12">Bergabung Bersama Kami</h1>
                 </AnimatedSection>
-                <div className="grid gap-8 mb-24">
+                <div className="grid gap-8 mb-8">
                     <AnimatedSection delay={0.1}>
                         <Item variant="outline" className="bg-white p-12">
                             <ItemContent className="gap-2">

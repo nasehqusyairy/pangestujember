@@ -5,13 +5,13 @@ import { AnimatedSection } from "../../animated-section";
 
 export function LocationSection() {
     return (
-        <section id="location" className="py-24">
+        <section id="location" className="py-12">
             <div className="container mx-auto">
                 <AnimatedSection className="text-center" delay={0.1}>
                     <h1 className="uppercase text-xl text-secondary mb-4">Lokasi</h1>
                     <h2 className="text-primary text-4xl mb-12">Oulet Kami</h2>
                 </AnimatedSection>
-                <div className="grid lg:grid-cols-3 gap-12 mb-24">
+                <div className="grid lg:grid-cols-3 gap-8 mb-8">
                     <AnimatedSection delay={0.1}>
                         <Card className="py-12 h-full">
                             <CardHeader className="px-12">

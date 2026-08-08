@@ -29,7 +29,7 @@ export function MenuItemCard(props: MenuItemCardProps) {
                 {props.description}
             </CardContent>
             <CardFooter className="border-t-0 bg-white">
-                <Button className="w-full" variant={'default'} size={'lg'}>Beli</Button>
+                <Button className="w-full" variant={'default'} size={'default'}>Pesan</Button>
             </CardFooter>
         </Card>
     )

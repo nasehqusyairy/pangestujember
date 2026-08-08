@@ -6,13 +6,13 @@ import { AnimatedSection } from "../../animated-section";
 
 export function MenuSection() {
     return (
-        <section className="bg-card py-24">
+        <section className="bg-card py-12">
             <AnimatedSection className="text-center" delay={0.1}>
                 <h1 className="text-secondary text-heading text-xl uppercase mb-4">Menu</h1>
                 <h2 className="text-primary text-heading text-4xl mb-12">Favorit Pelanggan</h2>
             </AnimatedSection>
             <div className="container mx-auto">
-                <div className="grid lg:grid-cols-3 gap-12 mb-24">
+                <div className="grid lg:grid-cols-3 gap-8 mb-8">
                     <AnimatedSection delay={0.1}>
                         <Card className="relative pt-0 bg-white h-full">
                             <div className="absolute inset-0 z-30 aspect-video bg-black/35" />
