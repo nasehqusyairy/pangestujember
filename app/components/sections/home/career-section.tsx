@@ -20,7 +20,7 @@ export function CareerSection() {
                                 <ItemDescription className="text-lg">
                                     A simple item with title and description.
                                 </ItemDescription>
-                                <div className="grid grid-cols-8 gap-8 text-secondary uppercase">
+                                <div className="flex lg:grid grid-cols-8 gap-8 text-secondary uppercase">
                                     <span>Full Time</span>
                                     <span>Pusat</span>
                                 </div>
@@ -39,7 +39,7 @@ export function CareerSection() {
                                 <ItemDescription className="text-lg">
                                     A simple item with title and description.
                                 </ItemDescription>
-                                <div className="grid grid-cols-8 gap-8 text-secondary uppercase">
+                                <div className="flex lg:grid grid-cols-8 gap-8 text-secondary uppercase">
                                     <span>Full Time</span>
                                     <span>Pusat</span>
                                 </div>
@@ -58,7 +58,7 @@ export function CareerSection() {
                                 <ItemDescription className="text-lg">
                                     A simple item with title and description.
                                 </ItemDescription>
-                                <div className="grid grid-cols-8 gap-8 text-secondary uppercase">
+                                <div className="flex lg:grid grid-cols-8 gap-8 text-secondary uppercase">
                                     <span>Full Time</span>
                                     <span>Pusat</span>
                                 </div>

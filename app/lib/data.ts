@@ -139,3 +139,6 @@ export const menuItems: MenuItem[] = [
         price: 22000,
     },
 ];
+
+// indexes
+export const favoriteMenus = [2, 3, 5, 8]
