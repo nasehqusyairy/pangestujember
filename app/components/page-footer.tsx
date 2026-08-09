@@ -38,7 +38,7 @@ export function PageFooter() {
 
                     {/* Kolom 3: Sosial Media Teks (Berbaris ke Bawah) */}
                     <div>
-                        <h3 className="text-white font-bold text-lg">Hubungi Kami</h3>
+                        <h3 className="text-white font-bold text-lg">Media Sosial</h3>
                         <ul>
                             <li>
                                 <a

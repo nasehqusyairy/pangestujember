@@ -5,6 +5,8 @@ import {
   DrawerContent,
   DrawerDescription,
   DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
 } from "./ui/drawer";
 import {
   Item,
@@ -21,10 +23,9 @@ import { useCart, type CartItem } from "~/components/context/cart-context";
 export type CartDrawerProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  position: "bottom" | "right";
 };
 
-export function CartDrawer({ open, onOpenChange, position }: CartDrawerProps) {
+export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
   const { items, totalPrice, setItemQuantity } = useCart();
 
   const handleQuantityChange = (item: CartItem, nextQuantity: number) => {
@@ -40,24 +41,29 @@ export function CartDrawer({ open, onOpenChange, position }: CartDrawerProps) {
     );
 
   const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
-  const swipeDirection = position === "bottom" ? "down" : "right";
 
   return (
     <Drawer
       open={open}
       onOpenChange={onOpenChange}
       modal={false}
-      swipeDirection={swipeDirection}
-      showSwipeHandle={swipeDirection === 'down'}
+      swipeDirection={"down"}
+      showSwipeHandle
       disablePointerDismissal
     >
-      <DrawerContent className={`rounded-none! bg-white!`}>
+      <DrawerContent className={`bg-white! border lg:w-3/12 ms-auto lg:me-8 shadow`}>
+        <DrawerHeader className="flex-row justify-between items-center pb-4 border-b">
+          <DrawerTitle className={'text-primary font-bold'}>Keranjang</DrawerTitle>
+          <Button variant={'ghost'} size={'icon'} onClick={() => onOpenChange(false)}>
+            <X />
+          </Button>
+        </DrawerHeader>
         {items.length === 0 ? (
           <DrawerDescription className="p-4 text-center">
             Keranjang kamu masih kosong.
           </DrawerDescription>
         ) : (
-          <div className={`flex-1 overflow-y-auto p-4 flex flex-col gap-2 ${swipeDirection === 'down' ? 'max-h-60' : ''}`}>
+          <div className={`flex-1 overflow-y-auto p-4 flex flex-col gap-2 max-h-60`}>
             {items.map((item) => (
               <Item key={item.id} className="p-0 border-b-input! rounded-none pb-2">
                 <ItemMedia className="size-12 rounded">
@@ -113,9 +119,6 @@ export function CartDrawer({ open, onOpenChange, position }: CartDrawerProps) {
               <Phone /> Pesan via WhatsApp
             </Button>
           )}
-          <Button className="w-full" variant={'secondary'} onClick={() => onOpenChange(false)}>
-            <X /> Tutup
-          </Button>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

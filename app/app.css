@@ -165,7 +165,7 @@
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-sans; /* Secara default menggunakan Work Sans */
+    @apply font-sans scroll-smooth; /* Secara default menggunakan Work Sans */
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading; /* Judul secara otomatis menggunakan Newsreader */
@@ -176,7 +176,7 @@
   }
 
   .nav-lg a.active{
-    @apply pb-2 border-b border-primary font-bold text-primary
+    @apply border-b border-primary font-bold text-primary
   }
 
   .nav-sm a.active, .nav-sm a.active:hover{

@@ -5,11 +5,7 @@ import { Menu, ShoppingCart } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { navlinks } from "~/lib/data";
 
-type NavbarProps = {
-    onOpenCart: (position: 'bottom' | 'right') => void;
-}
-
-export function Navbar({ onOpenCart }: NavbarProps) {
+export function Navbar() {
     return (
         <div className="relative h-16">
             <div className="fixed top-0 w-full bg-white shadow z-40">
@@ -23,28 +19,20 @@ export function Navbar({ onOpenCart }: NavbarProps) {
                             <NavLink key={`nav-lg-${el.label}`} to={el.href}>{el.label}</NavLink>
                         ))}
                     </div>
-                    <div className="action flex gap-2">
-                        <DropdownMenu>
-                            <DropdownMenuTrigger className={buttonVariants({
-                                size: "icon",
-                                className: 'lg:hidden',
-                                variant: 'outline'
-                            })}>
-                                <Menu />
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent className={'nav-sm'}>
-                                {navlinks.map(el => (
-                                    <DropdownMenuItem key={`nav-sm-${el.label}`} render={<NavLink to={el.href}>{el.label}</NavLink>} />
-                                ))}
-                            </DropdownMenuContent>
-                        </DropdownMenu>
-                        <Button size={'icon'} className={"lg:hidden"} onClick={() => onOpenCart('bottom')}>
-                            <ShoppingCart />
-                        </Button>
-                        <Button size={'lg'} className={'hidden lg:flex'} onClick={() => onOpenCart('right')}>
-                            <ShoppingCart /> Keranjang
-                        </Button>
-                    </div>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger className={buttonVariants({
+                            size: "icon",
+                            className: 'lg:hidden',
+                            variant: 'outline'
+                        })}>
+                            <Menu />
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent className={'nav-sm'}>
+                            {navlinks.map(el => (
+                                <DropdownMenuItem key={`nav-sm-${el.label}`} render={<NavLink to={el.href}>{el.label}</NavLink>} />
+                            ))}
+                        </DropdownMenuContent>
+                    </DropdownMenu>
                 </div>
             </div>
         </div>
