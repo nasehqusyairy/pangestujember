@@ -40,14 +40,23 @@ function saveCart(items: CartItem[]) {
   window.localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
 }
 
+// Fungsi helper yang menjaga urutan index tetap sama
 function mergeCartItem(cart: CartItem[], item: CartItemPayload, quantity: number): CartItem[] {
-  const nextCart = cart.filter((entry) => entry.id !== item.id);
-
   if (quantity <= 0) {
-    return nextCart;
+    return cart.filter((entry) => entry.id !== item.id);
   }
 
-  return [...nextCart, { ...item, quantity }];
+  const exists = cart.some((entry) => entry.id === item.id);
+
+  if (exists) {
+    // Update quantity di posisi asal tanpa mengubah index
+    return cart.map((entry) =>
+      entry.id === item.id ? { ...entry, quantity } : entry
+    );
+  }
+
+  // Jika item baru, tambahkan ke posisi paling akhir
+  return [...cart, { ...item, quantity }];
 }
 
 export function CartProvider({ children }: { children: ReactNode }) {
@@ -88,17 +97,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
     });
   };
 
-  const value = useMemo(
-    () => ({
-      items,
-      totalPrice,
-      getQuantity: (id: number) => items.find((item) => item.id === id)?.quantity ?? 0,
-      addItem,
-      removeItem,
-      setItemQuantity,
-    }),
-    [items, totalPrice, addItem, removeItem, setItemQuantity],
-  );
+  const value = {
+    items,
+    totalPrice,
+    getQuantity: (id: number) => items.find((item) => item.id === id)?.quantity ?? 0,
+    addItem,
+    removeItem,
+    setItemQuantity,
+  };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
