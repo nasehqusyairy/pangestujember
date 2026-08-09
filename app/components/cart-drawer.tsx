@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, Minus, Phone, Plus, X } from "lucide-react";
+import { Minus, Phone, Plus, X } from "lucide-react";
 import { Button, buttonVariants } from "./ui/button";
 import {
   Drawer,
   DrawerContent,
   DrawerDescription,
   DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
 } from "./ui/drawer";
 import {
   Item,
@@ -18,9 +16,7 @@ import {
   ItemTitle,
 } from "./ui/item";
 import { toRupiah } from "~/lib/utils";
-
-const CART_STORAGE_KEY = "pangestujember_cart";
-const WHATSAPP_NUMBER = "6285855747776";
+import { CART_STORAGE_KEY, WHATSAPP_NUMBER, type MenuItem } from "~/lib/data";
 
 export type CartDrawerProps = {
   open: boolean;
@@ -28,13 +24,7 @@ export type CartDrawerProps = {
   position: "bottom" | "right";
 };
 
-type CartItem = {
-  id: number;
-  title: string;
-  price: number;
-  img: string;
-  quantity: number;
-};
+type CartItem = MenuItem & { quantity: number }
 
 function getSavedCart(): CartItem[] {
   if (typeof window === "undefined") return [];
@@ -55,11 +45,20 @@ function saveCart(items: CartItem[]) {
 
 function updateCartItem(item: CartItem, quantity: number) {
   const cart = getSavedCart();
-  const nextCart = cart.filter((entry) => entry.id !== item.id);
 
-  if (quantity > 0) {
-    nextCart.push({ ...item, quantity });
+  if (quantity <= 0) {
+    const nextCart = cart.filter((entry) => entry.id !== item.id);
+    saveCart(nextCart);
+    return nextCart;
   }
+
+  const exists = cart.some((entry) => entry.id === item.id);
+
+  const nextCart = exists
+    ? cart.map((entry) =>
+      entry.id === item.id ? { ...entry, quantity } : entry
+    )
+    : [...cart, { ...item, quantity }];
 
   saveCart(nextCart);
   return nextCart;
@@ -101,10 +100,11 @@ export function CartDrawer({ open, onOpenChange, position }: CartDrawerProps) {
       modal={false}
       swipeDirection={swipeDirection}
       showSwipeHandle={swipeDirection === 'down'}
+      disablePointerDismissal
     >
-      <DrawerContent className={'rounded-none! bg-white!'}>
+      <DrawerContent className={`rounded-none! bg-white!`}>
         {items.length === 0 ? (
-          <DrawerDescription className="p-6 text-center">
+          <DrawerDescription className="p-4 text-center">
             Keranjang kamu masih kosong.
           </DrawerDescription>
         ) : (
@@ -115,7 +115,7 @@ export function CartDrawer({ open, onOpenChange, position }: CartDrawerProps) {
                   <img src={item.img} alt={item.title} className="h-full w-full object-cover rounded" />
                 </ItemMedia>
 
-                <ItemContent className="flex-1 flex flex-col gap-1">
+                <ItemContent className="flex-1 gap-1">
                   <ItemTitle className="truncate font-semibold">{item.title}</ItemTitle>
                   <ItemDescription className="text-xs text-muted-foreground">
                     {toRupiah(item.price)} / item
@@ -129,7 +129,7 @@ export function CartDrawer({ open, onOpenChange, position }: CartDrawerProps) {
                   <Button
                     variant="secondary"
                     size="icon"
-                    className="h-6 w-6"
+                    className={'size-6'}
                     onClick={() => handleQuantityChange(item, item.quantity - 1)}
                   >
                     <Minus />
@@ -138,7 +138,7 @@ export function CartDrawer({ open, onOpenChange, position }: CartDrawerProps) {
                   <Button
                     variant="secondary"
                     size="icon"
-                    className="h-6 w-6"
+                    className={'size-6'}
                     onClick={() => handleQuantityChange(item, item.quantity + 1)}
                   >
                     <Plus />
@@ -149,9 +149,9 @@ export function CartDrawer({ open, onOpenChange, position }: CartDrawerProps) {
           </div>
         )}
 
-        <DrawerFooter className="border-t p-4 flex flex-col gap-2">
-          <div className="flex items-center justify-between text-sm font-semibold">
-            <span>Total Pesanan</span>
+        <DrawerFooter className="border-t p-4">
+          <div className="flex items-center justify-between">
+            <span className="font-bold">Total Pesanan</span>
             <span>{toRupiah(totalPrice)}</span>
           </div>
 
@@ -164,7 +164,7 @@ export function CartDrawer({ open, onOpenChange, position }: CartDrawerProps) {
               <Phone /> Pesan via WhatsApp
             </Button>
           )}
-          <Button className="w-full" variant={'secondary'}>
+          <Button className="w-full" variant={'secondary'} onClick={() => onOpenChange(false)}>
             <X /> Tutup
           </Button>
         </DrawerFooter>
