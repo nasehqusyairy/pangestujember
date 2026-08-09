@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, X } from "lucide-react";
+import { ArrowRight, Minus, Phone, Plus, X } from "lucide-react";
 import { Button, buttonVariants } from "./ui/button";
 import {
   Drawer,
@@ -20,7 +20,7 @@ import {
 import { toRupiah } from "~/lib/utils";
 
 const CART_STORAGE_KEY = "pangestujember_cart";
-const WHATSAPP_NUMBER = "6282330741775";
+const WHATSAPP_NUMBER = "6285855747776";
 
 export type CartDrawerProps = {
   open: boolean;
@@ -100,15 +100,9 @@ export function CartDrawer({ open, onOpenChange, position }: CartDrawerProps) {
       onOpenChange={onOpenChange}
       modal={false}
       swipeDirection={swipeDirection}
+      showSwipeHandle={swipeDirection === 'down'}
     >
-      <DrawerContent className={'rounded-none!'}>
-        <DrawerHeader className="flex flex-row items-center justify-between">
-          <DrawerTitle>Keranjang</DrawerTitle>
-          <Button variant="ghost" size="icon" onClick={() => onOpenChange(false)}>
-            <X />
-          </Button>
-        </DrawerHeader>
-
+      <DrawerContent className={'rounded-none! bg-white!'}>
         {items.length === 0 ? (
           <DrawerDescription className="p-6 text-center">
             Keranjang kamu masih kosong.
@@ -116,38 +110,38 @@ export function CartDrawer({ open, onOpenChange, position }: CartDrawerProps) {
         ) : (
           <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-2">
             {items.map((item) => (
-              <Item key={item.id} variant={'outline'} className="flex items-center gap-4 rounded-xl p-3">
-                <ItemMedia className="h-16 w-16 shrink-0 overflow-hidden rounded-lg">
-                  <img src={item.img} alt={item.title} className="h-full w-full object-cover" />
+              <Item key={item.id} className="p-0 border-b-input! rounded-none pb-2">
+                <ItemMedia className="size-12 rounded">
+                  <img src={item.img} alt={item.title} className="h-full w-full object-cover rounded" />
                 </ItemMedia>
 
-                <ItemContent className="flex-1 min-w-0 flex flex-col gap-1">
+                <ItemContent className="flex-1 flex flex-col gap-1">
                   <ItemTitle className="truncate font-semibold">{item.title}</ItemTitle>
                   <ItemDescription className="text-xs text-muted-foreground">
                     {toRupiah(item.price)} / item
                   </ItemDescription>
-                  <ItemTitle className="text-sm font-semibold text-primary">
+                  <ItemTitle className="text-sm text-primary">
                     {toRupiah(item.price * item.quantity)}
                   </ItemTitle>
                 </ItemContent>
 
-                <ItemActions className="flex items-center gap-2">
+                <ItemActions className="bg-card p-1 rounded">
                   <Button
-                    variant="outline"
+                    variant="secondary"
                     size="icon"
-                    className="h-8 w-8"
+                    className="h-6 w-6"
                     onClick={() => handleQuantityChange(item, item.quantity - 1)}
                   >
-                    -
+                    <Minus />
                   </Button>
                   <span className="w-6 text-center font-medium">{item.quantity}</span>
                   <Button
-                    variant="default"
+                    variant="secondary"
                     size="icon"
-                    className="h-8 w-8"
+                    className="h-6 w-6"
                     onClick={() => handleQuantityChange(item, item.quantity + 1)}
                   >
-                    +
+                    <Plus />
                   </Button>
                 </ItemActions>
               </Item>
@@ -155,21 +149,24 @@ export function CartDrawer({ open, onOpenChange, position }: CartDrawerProps) {
           </div>
         )}
 
-        <DrawerFooter className="border-t p-4 flex flex-col gap-3">
+        <DrawerFooter className="border-t p-4 flex flex-col gap-2">
           <div className="flex items-center justify-between text-sm font-semibold">
             <span>Total Pesanan</span>
             <span>{toRupiah(totalPrice)}</span>
           </div>
 
           {items.length > 0 ? (
-            <a className={buttonVariants({ size: "lg", className: "w-full justify-center" })} href={whatsappHref} target="_blank" rel="noreferrer">
-              Pesan via WhatsApp <ArrowRight className="ml-2 h-4 w-4" />
+            <a className={buttonVariants({ className: "w-full" })} href={whatsappHref} target="_blank" rel="noreferrer">
+              <Phone /> Pesan via WhatsApp
             </a>
           ) : (
-            <Button size="lg" className="w-full" disabled>
-              Pesan via WhatsApp
+            <Button className="w-full" disabled>
+              <Phone /> Pesan via WhatsApp
             </Button>
           )}
+          <Button className="w-full" variant={'secondary'}>
+            <X /> Tutup
+          </Button>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

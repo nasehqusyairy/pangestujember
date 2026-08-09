@@ -8,13 +8,13 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        // 1. Tombol Utama: Forest Green, teks putih, radius 4px (rounded-sm)
+        // 1. Tombol Utama: Forest Green, teks putih, radius 4px ()
         default:
-          "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 rounded-sm",
+          "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 ",
 
         // 2. Tombol Sekunder: Outline warna Kayu (Secondary Wood tone)
         outline:
-          "border border-secondary text-secondary bg-transparent shadow-sm hover:bg-secondary/10 rounded-sm",
+          "border border-secondary text-secondary bg-transparent shadow-sm hover:bg-secondary/10 ",
 
         // Varian lain bisa Anda sesuaikan atau biarkan bawaan
         destructive:
@@ -26,9 +26,9 @@ const buttonVariants = cva(
       },
       size: {
         default: "h-9 px-4 py-2",
-        sm: "h-8 px-3 text-xs",
+        sm: "h-6 px-3 text-xs",
         lg: "h-12 px-4 py-2",
-        icon: "h-9 w-9",
+        icon: "size-9",
       },
     },
     defaultVariants: {
