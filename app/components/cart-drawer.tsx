@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Minus, Phone, Plus, X } from "lucide-react";
 import { Button, buttonVariants } from "./ui/button";
 import {
@@ -16,7 +15,8 @@ import {
   ItemTitle,
 } from "./ui/item";
 import { toRupiah } from "~/lib/utils";
-import { CART_STORAGE_KEY, WHATSAPP_NUMBER, type MenuItem } from "~/lib/data";
+import { WHATSAPP_NUMBER } from "~/lib/data";
+import { useCart, type CartItem } from "~/components/context/cart-context";
 
 export type CartDrawerProps = {
   open: boolean;
@@ -24,64 +24,13 @@ export type CartDrawerProps = {
   position: "bottom" | "right";
 };
 
-type CartItem = MenuItem & { quantity: number }
-
-function getSavedCart(): CartItem[] {
-  if (typeof window === "undefined") return [];
-
-  try {
-    const raw = window.localStorage.getItem(CART_STORAGE_KEY);
-    if (!raw) return [];
-    return JSON.parse(raw) as CartItem[];
-  } catch {
-    return [];
-  }
-}
-
-function saveCart(items: CartItem[]) {
-  if (typeof window === "undefined") return;
-  window.localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
-}
-
-function updateCartItem(item: CartItem, quantity: number) {
-  const cart = getSavedCart();
-
-  if (quantity <= 0) {
-    const nextCart = cart.filter((entry) => entry.id !== item.id);
-    saveCart(nextCart);
-    return nextCart;
-  }
-
-  const exists = cart.some((entry) => entry.id === item.id);
-
-  const nextCart = exists
-    ? cart.map((entry) =>
-      entry.id === item.id ? { ...entry, quantity } : entry
-    )
-    : [...cart, { ...item, quantity }];
-
-  saveCart(nextCart);
-  return nextCart;
-}
-
 export function CartDrawer({ open, onOpenChange, position }: CartDrawerProps) {
-  const [items, setItems] = useState<CartItem[]>([]);
-
-  useEffect(() => {
-    if (open) {
-      setItems(getSavedCart());
-    }
-  }, [open]);
+  const { items, totalPrice, setItemQuantity } = useCart();
 
   const handleQuantityChange = (item: CartItem, nextQuantity: number) => {
-    const nextCart = updateCartItem(item, nextQuantity);
-    setItems(nextCart);
+    setItemQuantity(item, nextQuantity);
   };
 
-  // Perhitungan total harga langsung tanpa useMemo
-  const totalPrice = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
-
-  // Perhitungan pesan WhatsApp langsung tanpa useMemo
   const whatsappMessage = items.length === 0
     ? "Halo, saya ingin memesan."
     : encodeURIComponent(
@@ -108,7 +57,7 @@ export function CartDrawer({ open, onOpenChange, position }: CartDrawerProps) {
             Keranjang kamu masih kosong.
           </DrawerDescription>
         ) : (
-          <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-2">
+          <div className={`flex-1 overflow-y-auto p-4 flex flex-col gap-2 ${swipeDirection === 'down' ? 'max-h-60' : ''}`}>
             {items.map((item) => (
               <Item key={item.id} className="p-0 border-b-input! rounded-none pb-2">
                 <ItemMedia className="size-12 rounded">
