@@ -5,7 +5,11 @@ import { Menu, ShoppingCart } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { navlinks } from "~/lib/data";
 
-export function Navbar() {
+type NavbarProps = {
+    onOpenCart: (position: 'bottom' | 'right') => void;
+}
+
+export function Navbar({ onOpenCart }: NavbarProps) {
     return (
         <div className="relative h-16">
             <div className="fixed top-0 w-full bg-white shadow z-40">
@@ -34,10 +38,12 @@ export function Navbar() {
                                 ))}
                             </DropdownMenuContent>
                         </DropdownMenu>
-                        <Button size={'icon'} className={"lg:hidden"}>
+                        <Button size={'icon'} className={"lg:hidden"} onClick={() => onOpenCart('bottom')}>
                             <ShoppingCart />
                         </Button>
-                        <Button size={'lg'} className={'hidden lg:block'}>Lihat Keranjang</Button>
+                        <Button size={'lg'} className={'hidden lg:flex'} onClick={() => onOpenCart('right')}>
+                            <ShoppingCart /> Keranjang
+                        </Button>
                     </div>
                 </div>
             </div>

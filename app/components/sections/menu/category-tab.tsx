@@ -45,6 +45,7 @@ export function CategoryTab() {
                     {categoryItems.map((item) => (
                         <MenuItemCard
                             key={item.id}
+                            id={item.id}
                             img={item.img}
                             price={item.price}
                             description={item.description}
