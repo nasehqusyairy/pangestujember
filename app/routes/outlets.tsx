@@ -1,5 +1,6 @@
 import { Clock, MapPin, Phone } from "lucide-react";
 import { Jumbotron } from "~/components/jumbotron";
+import { ZoomableImage } from "~/components/image-zoom";
 import { outlets } from "~/lib/data";
 
 export default function Outlets() {
@@ -18,27 +19,29 @@ export default function Outlets() {
                             />
                             <div className="grid gap-2">
                                 <div className="grid grid-cols-3 gap-2 mb-2">
-                                    <div className="aspect-video overflow-hidden rounded">
-                                        <img src="/images/ab1.png" alt="Location Preview" className="w-full" loading="lazy" />
-                                    </div>
-                                    <div className="aspect-video overflow-hidden rounded">
-                                        <img src="/images/ab1.png" alt="Location Preview" className="w-full" loading="lazy" />
-                                    </div>
-                                    <div className="aspect-video overflow-hidden rounded">
-                                        <img src="/images/ab1.png" alt="Location Preview" className="w-full" loading="lazy" />
-                                    </div>
-                                    <div className="aspect-video overflow-hidden rounded">
-                                        <img src="/images/ab1.png" alt="Location Preview" className="w-full" loading="lazy" />
-                                    </div>
-                                    <div className="aspect-video overflow-hidden rounded">
-                                        <img src="/images/ab1.png" alt="Location Preview" className="w-full" loading="lazy" />
-                                    </div>
-                                    <div className="aspect-video overflow-hidden rounded">
-                                        <img src="/images/ab1.png" alt="Location Preview" className="w-full" loading="lazy" />
-                                    </div>
+                                    {o.location_previews.map((src, index) => (
+                                        <div key={index} className="aspect-video overflow-hidden rounded">
+                                            <ZoomableImage
+                                                src={src}
+                                                alt={`Location preview ${index + 1}`}
+                                                loading="lazy"
+                                                className="w-full aspect-video"
+                                            />
+                                        </div>
+                                    ))}
                                 </div>
                                 <h2 className="text-primary text-2xl">{o.title}</h2>
-                                <p className="flex gap-2 items-center"><MapPin className="size-4 text-secondary" /> {o.address}</p>
+                                <p className="flex gap-2 items-center">
+                                    <MapPin className="size-4 text-secondary" />
+                                    <a
+                                        href={`https://www.google.com/maps?q=${o.lat},${o.lng}`}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="underline"
+                                    >
+                                        {o.address}
+                                    </a>
+                                </p>
                                 <p className="flex gap-2 items-center"><Phone className="size-4 text-secondary" /><a href={`https://wa.me/${o.phone}`} className="underline">{o.phone}</a></p>
                                 <p className="flex gap-2 items-center"><Clock className="size-4 text-secondary" />{o.hours}</p>
                             </div>

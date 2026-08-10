@@ -1,6 +1,7 @@
 import { Minus, Plus } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
+import { ZoomableImage } from "./image-zoom";
 import { toRupiah } from "~/lib/utils";
 import { useCart } from "~/components/context/cart-context";
 
@@ -37,12 +38,12 @@ export function MenuItemCard(props: MenuItemCardProps) {
     };
 
     return (
-        <Card className="relative pt-0 bg-white h-full justify-between">
-            <div className="absolute inset-0 z-30 aspect-video bg-black/35" />
-            <img
+        <Card className="pt-0 bg-white h-full justify-between">
+            <ZoomableImage
                 src={props.img}
                 alt={`${props.title} Image`}
-                className="relative z-20 aspect-video w-full object-cover"
+                className="aspect-video w-full"
+                loading="lazy"
             />
             <CardHeader>
                 <CardTitle>{props.title}</CardTitle>

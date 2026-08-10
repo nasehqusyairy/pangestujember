@@ -29,6 +29,7 @@ export type Outlet = {
     address: string
     phone: string
     hours: string
+    location_previews: string[]
     lat: number
     lng: number
 }
@@ -157,6 +158,14 @@ export const outlets: Outlet[] = [
         address: 'Jl. Merdeka No.1, Kota Jember',
         phone: '628123456789',
         hours: '09:00 - 21:00',
+        location_previews: [
+            '/images/ab1.png',
+            '/images/ab1.png',
+            '/images/ab1.png',
+            '/images/ab1.png',
+            '/images/ab1.png',
+            '/images/ab1.png',
+        ],
         lat: -8.1719,
         lng: 113.7034,
     },
@@ -166,6 +175,14 @@ export const outlets: Outlet[] = [
         address: 'Jl. Diponegoro No.45, Sumbersari',
         phone: '628987654321',
         hours: '10:00 - 22:00',
+        location_previews: [
+            '/images/ab1.png',
+            '/images/ab1.png',
+            '/images/ab1.png',
+            '/images/ab1.png',
+            '/images/ab1.png',
+            '/images/ab1.png',
+        ],
         lat: -8.1600,
         lng: 113.7030,
     },
@@ -175,6 +192,14 @@ export const outlets: Outlet[] = [
         address: 'Komplek Ruko Barat No.3, Rambipuji',
         phone: '6281122334455',
         hours: '08:00 - 20:00',
+        location_previews: [
+            '/images/ab1.png',
+            '/images/ab1.png',
+            '/images/ab1.png',
+            '/images/ab1.png',
+            '/images/ab1.png',
+            '/images/ab1.png',
+        ],
         lat: -8.1900,
         lng: 113.6900,
     },
