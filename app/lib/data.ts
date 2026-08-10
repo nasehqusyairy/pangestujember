@@ -23,6 +23,16 @@ export type MenuItem = {
     price: number
 }
 
+export type Outlet = {
+    id: number
+    title: string
+    address: string
+    phone: string
+    hours: string
+    lat: number
+    lng: number
+}
+
 // constants
 export const CART_STORAGE_KEY = "pangestujember_cart";
 export const WHATSAPP_NUMBER = "6285855747776";
@@ -140,22 +150,12 @@ export const menuItems: MenuItem[] = [
     },
 ];
 
-export type Outlet = {
-    id: number
-    title: string
-    address: string
-    phone: string
-    hours: string
-    lat: number
-    lng: number
-}
-
 export const outlets: Outlet[] = [
     {
         id: 1,
         title: 'Pangestu Jember - Pusat',
         address: 'Jl. Merdeka No.1, Kota Jember',
-        phone: '+628123456789',
+        phone: '628123456789',
         hours: '09:00 - 21:00',
         lat: -8.1719,
         lng: 113.7034,
@@ -164,7 +164,7 @@ export const outlets: Outlet[] = [
         id: 2,
         title: 'Pangestu Jember - Timur',
         address: 'Jl. Diponegoro No.45, Sumbersari',
-        phone: '+628987654321',
+        phone: '628987654321',
         hours: '10:00 - 22:00',
         lat: -8.1600,
         lng: 113.7030,
@@ -173,7 +173,7 @@ export const outlets: Outlet[] = [
         id: 3,
         title: 'Pangestu Jember - Barat',
         address: 'Komplek Ruko Barat No.3, Rambipuji',
-        phone: '+6281122334455',
+        phone: '6281122334455',
         hours: '08:00 - 20:00',
         lat: -8.1900,
         lng: 113.6900,
