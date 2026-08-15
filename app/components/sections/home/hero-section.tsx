@@ -1,11 +1,14 @@
 import { Button } from "~/components/ui/button";
 import { ShoppingCart } from 'lucide-react'
 import { AnimatedSection } from "../../animated-section";
+import { homeContent } from "~/lib/data";
 
 export function HeroSection() {
+    const h = homeContent.hero;
+
     return (
         <section style={{
-            backgroundImage: "linear-gradient(rgba(1, 45, 29, 0.2), rgba(1, 45, 29, 0.2)), url(/images/hero.png)",
+            backgroundImage: `linear-gradient(rgba(1, 45, 29, 0.2), rgba(1, 45, 29, 0.2)), url(${h.backgroundImage})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundAttachment: 'fixed'
@@ -13,18 +16,12 @@ export function HeroSection() {
             <div className="container py-12 mx-auto h-full">
                 <div className="grid lg:grid-cols-7 h-full">
                     <AnimatedSection className="lg:col-span-4 h-full bg-primary/50 backdrop-blur-sm border rounded-lg border-white/10 lg:p-xl p-8" delay={0.1}>
-                        <h1 className="text-primary-foreground text-4xl lg:text-6xl mb-8 font-bold">
-                            Cita Rasa Otentik di Jember
-                        </h1>
-                        <p className="text-primary-foreground font-heading mb-8 text-xl">
-                            Nikmati keajaiban bumbu tradisional yang diracik dengan penuh
-                            cinta, membawa Anda ke dalam perjalanan rasa melintasi sejarah dan
-                            tradisi Jawa Timur.
-                        </p>
+                        <h1 className="text-primary-foreground text-4xl lg:text-6xl mb-8 font-bold">{h.title}</h1>
+                        <p className="text-primary-foreground font-heading mb-8 text-xl">{h.paragraph}</p>
                         <div className="grid grid-cols-3">
                             <div className="col-span-2 grid gap-4">
-                                <Button size={'lg'}><ShoppingCart /> Pesan Sekarang</Button>
-                                <Button variant={'outline'} className={'border-white text-white'} size={'lg'}>Lihat Menu</Button>
+                                <Button size={'lg'}><ShoppingCart /> {h.primaryButton}</Button>
+                                <Button variant={'outline'} className={'border-white text-white'} size={'lg'}>{h.secondaryButton}</Button>
                             </div>
                         </div>
                     </AnimatedSection>

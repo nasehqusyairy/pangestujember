@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
 import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from "~/components/ui/item";
 import { AnimatedSection } from "../../animated-section";
+import { careers } from "~/lib/data";
 
 export function CareerSection() {
     return (
@@ -13,63 +14,23 @@ export function CareerSection() {
                     <h1 className="text-primary text-4xl mb-12">Bergabung Bersama Kami</h1>
                 </AnimatedSection>
                 <div className="grid gap-8 mb-8">
-                    <AnimatedSection delay={0.1}>
-                        <Item variant="outline" className="bg-white p-12">
-                            <ItemContent className="gap-2">
-                                <ItemTitle className="text-2xl text-primary">Kepala Koki</ItemTitle>
-                                <ItemDescription className="text-lg">
-                                    A simple item with title and description.
-                                </ItemDescription>
-                                <div className="flex lg:grid grid-cols-8 gap-8 text-secondary uppercase">
-                                    <span>Full Time</span>
-                                    <span>Pusat</span>
-                                </div>
-                            </ItemContent>
-                            <ItemActions>
-                                <Button size="lg">
-                                    Lamar Sekarang
-                                </Button>
-                            </ItemActions>
-                        </Item>
-                    </AnimatedSection>
-                    <AnimatedSection delay={0.2}>
-                        <Item variant="outline" className="bg-white p-12">
-                            <ItemContent className="gap-2">
-                                <ItemTitle className="text-2xl text-primary">Manajer Lantai</ItemTitle>
-                                <ItemDescription className="text-lg">
-                                    A simple item with title and description.
-                                </ItemDescription>
-                                <div className="flex lg:grid grid-cols-8 gap-8 text-secondary uppercase">
-                                    <span>Full Time</span>
-                                    <span>Pusat</span>
-                                </div>
-                            </ItemContent>
-                            <ItemActions>
-                                <Button size="lg">
-                                    Lamar Sekarang
-                                </Button>
-                            </ItemActions>
-                        </Item>
-                    </AnimatedSection>
-                    <AnimatedSection delay={0.3}>
-                        <Item variant="outline" className="bg-white p-12">
-                            <ItemContent className="gap-2">
-                                <ItemTitle className="text-2xl text-primary">Barista</ItemTitle>
-                                <ItemDescription className="text-lg">
-                                    A simple item with title and description.
-                                </ItemDescription>
-                                <div className="flex lg:grid grid-cols-8 gap-8 text-secondary uppercase">
-                                    <span>Full Time</span>
-                                    <span>Pusat</span>
-                                </div>
-                            </ItemContent>
-                            <ItemActions>
-                                <Button size="lg">
-                                    Lamar Sekarang
-                                </Button>
-                            </ItemActions>
-                        </Item>
-                    </AnimatedSection>
+                    {careers.map((c, i) => (
+                        <AnimatedSection key={c.id} delay={0.1 * (i + 1)}>
+                            <Item variant="outline" className="bg-white p-12">
+                                <ItemContent className="gap-2">
+                                    <ItemTitle className="text-2xl text-primary">{c.title}</ItemTitle>
+                                    <ItemDescription className="text-lg">{c.description}</ItemDescription>
+                                    <div className="flex lg:grid grid-cols-8 gap-8 text-secondary uppercase">
+                                        <span>{c.time}</span>
+                                        <span>Pusat</span>
+                                    </div>
+                                </ItemContent>
+                                <ItemActions>
+                                    <Button size="lg">Lamar Sekarang</Button>
+                                </ItemActions>
+                            </Item>
+                        </AnimatedSection>
+                    ))}
                 </div>
                 <AnimatedSection className="text-center" delay={0.2}>
                     <p className="text-secondary underline uppercase">
