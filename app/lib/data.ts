@@ -34,6 +34,15 @@ export type Outlet = {
     lng: number
 }
 
+export type Career = {
+    id: number
+    title: string
+    outlet_id: number
+    time: 'Full Time' | 'Part Time' | string
+    description: string
+    requirements: string[]
+}
+
 // constants
 export const CART_STORAGE_KEY = "pangestujember_cart";
 export const WHATSAPP_NUMBER = "6285855747776";
@@ -204,15 +213,6 @@ export const outlets: Outlet[] = [
         lng: 113.6900,
     },
 ];
-
-export type Career = {
-    id: number
-    title: string
-    outlet_id: number
-    time: 'Full Time' | 'Part Time' | string
-    description: string
-    requirements: string[]
-}
 
 export const careers: Career[] = [
     {
