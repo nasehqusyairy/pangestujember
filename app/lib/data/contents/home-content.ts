@@ -1,3 +1,5 @@
+import { aboutContent } from "./about-content";
+
 export const homeContent = {
     hero: {
         title: 'Cita Rasa Otentik di Jember',
@@ -5,17 +7,13 @@ export const homeContent = {
                             cinta, membawa Anda ke dalam perjalanan rasa melintasi sejarah dan
                             tradisi Jawa Timur.`,
         backgroundImage: '/images/hero.png',
-        primaryButton: 'Pesan Sekarang',
-        secondaryButton: 'Lihat Menu'
+        actionButton: 'Pesan Sekarang',
     },
     aboutSection: {
         headingSmall: 'Tentang Kami',
-        heading: 'Tradisi yang Tetap Terjaga',
-        paragraphs: [
-            'Restoran Pangestu lahir dari keinginan sederhana: melestarikan resep-resep keluarga yang telah dinikmati lintas generasi.',
-            'Setiap bahan kami pilih secara teliti dari petani lokal untuk memastikan kesegaran optimal.'
-        ],
-        image: '/images/about.png'
+        heading: aboutContent.sections[0].heading,
+        paragraphs: aboutContent.sections[0].paragraphs,
+        image: aboutContent.sections[0].image!
     },
     testimony: [
         {

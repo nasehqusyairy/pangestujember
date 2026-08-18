@@ -20,13 +20,8 @@ import { toRupiah } from "~/lib/utils";
 import { WHATSAPP_NUMBER } from "~/lib/data";
 import { useCart, type CartItem } from "~/components/context/cart-context";
 
-export type CartDrawerProps = {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-};
-
-export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
-  const { items, totalPrice, setItemQuantity } = useCart();
+export function CartDrawer() {
+  const { items, totalPrice, setItemQuantity, drawerOpen, setDrawerOpen } = useCart();
 
   const handleQuantityChange = (item: CartItem, nextQuantity: number) => {
     setItemQuantity(item, nextQuantity);
@@ -44,8 +39,8 @@ export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
 
   return (
     <Drawer
-      open={open}
-      onOpenChange={onOpenChange}
+      open={drawerOpen}
+      onOpenChange={setDrawerOpen}
       modal={false}
       swipeDirection={"down"}
       showSwipeHandle
@@ -54,7 +49,7 @@ export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
       <DrawerContent className={`bg-white! border lg:w-3/12 ms-auto lg:me-8 shadow`}>
         <DrawerHeader className="flex-row justify-between items-center pb-4 border-b">
           <DrawerTitle className={'text-primary font-bold'}>Keranjang</DrawerTitle>
-          <Button variant={'ghost'} size={'icon'} onClick={() => onOpenChange(false)}>
+          <Button variant={'ghost'} size={'icon'} onClick={() => setDrawerOpen(false)}>
             <X />
           </Button>
         </DrawerHeader>
@@ -67,11 +62,11 @@ export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
             {items.map((item) => (
               <Item key={item.id} className="p-0 border-b-input! rounded-none pb-2">
                 <ItemMedia className="size-12 rounded">
-                  <img src={item.img} alt={item.title} className="h-full w-full object-cover rounded" />
+                  <img src={item.img_url} alt={item.title} className="h-full w-full object-cover rounded" />
                 </ItemMedia>
 
-                <ItemContent className="flex-1 gap-1">
-                  <ItemTitle className="truncate font-semibold">{item.title}</ItemTitle>
+                <ItemContent className="flex-1 gap-1 min-w-0">
+                  <ItemTitle className="truncate font-semibold block w-full">{item.title}</ItemTitle>
                   <ItemDescription className="text-xs text-muted-foreground">
                     {toRupiah(item.price)} / item
                   </ItemDescription>

@@ -14,7 +14,6 @@ export function ZoomableImage({
     ...props
 }: ZoomableImageProps) {
     const [isOpen, setIsOpen] = useState(false);
-
     return (
         <>
             <img

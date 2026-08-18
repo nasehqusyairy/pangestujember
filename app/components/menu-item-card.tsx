@@ -4,14 +4,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { ZoomableImage } from "./image-zoom";
 import { toRupiah } from "~/lib/utils";
 import { useCart } from "~/components/context/cart-context";
+import type { MenuItem } from "../lib/data";
 
-export type MenuItemCardProps = {
-    id: number
-    img: string
-    title: string
-    price: number
-    description: string
-}
+export type MenuItemCardProps = Omit<Omit<MenuItem, 'category_id'>, 'is_favorite'>
 
 export function MenuItemCard(props: MenuItemCardProps) {
     const { getQuantity, addItem, removeItem } = useCart();
@@ -22,7 +17,7 @@ export function MenuItemCard(props: MenuItemCardProps) {
             id: props.id,
             title: props.title,
             price: props.price,
-            img: props.img,
+            img_url: props.img_url,
             description: props.description,
         });
     };
@@ -32,7 +27,7 @@ export function MenuItemCard(props: MenuItemCardProps) {
             id: props.id,
             title: props.title,
             price: props.price,
-            img: props.img,
+            img_url: props.img_url,
             description: props.description,
         });
     };
@@ -40,10 +35,10 @@ export function MenuItemCard(props: MenuItemCardProps) {
     return (
         <Card className="pt-0 bg-white h-full justify-between">
             <ZoomableImage
-                src={props.img}
+                src={props.img_url}
                 alt={`${props.title} Image`}
                 className="aspect-video w-full"
-                loading="lazy"
+            // loading="lazy"
             />
             <CardHeader>
                 <CardTitle>{props.title}</CardTitle>

@@ -12,7 +12,7 @@ export default function About() {
             <Jumbotron title={aboutContent.jumbotronTitle} />
 
             <section className="container mx-auto pt-24 pb-12">
-                <div className="grid lg:grid-cols-5 gap-8 items-center">
+                <div className="grid lg:grid-cols-5 gap-24 items-center">
                     <div className="col-span-2 hidden lg:block">
                         <img src={first.image} alt="About Image" className="w-full rounded-lg" />
                     </div>

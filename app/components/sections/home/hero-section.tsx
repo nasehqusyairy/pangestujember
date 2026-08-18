@@ -3,9 +3,14 @@ import { ShoppingCart } from 'lucide-react'
 import { AnimatedSection } from "../../animated-section";
 import { homeContent } from "~/lib/data";
 
-export function HeroSection() {
-    const h = homeContent.hero;
+const h = homeContent.hero;
 
+const toMenuSection = () => {
+    const element = document.getElementById("menu")!;
+    element.scrollIntoView({ behavior: 'smooth' });
+}
+
+export function HeroSection() {
     return (
         <section style={{
             backgroundImage: `linear-gradient(rgba(1, 45, 29, 0.2), rgba(1, 45, 29, 0.2)), url(${h.backgroundImage})`,
@@ -20,8 +25,14 @@ export function HeroSection() {
                         <p className="text-primary-foreground font-heading mb-8 text-xl">{h.paragraph}</p>
                         <div className="grid grid-cols-3">
                             <div className="col-span-2 grid gap-4">
-                                <Button size={'lg'}><ShoppingCart /> {h.primaryButton}</Button>
-                                <Button variant={'outline'} className={'border-white text-white'} size={'lg'}>{h.secondaryButton}</Button>
+                                <Button
+                                    variant={'outline'}
+                                    className={'border-white text-white'}
+                                    size={'lg'}
+                                    onClick={toMenuSection}
+                                >
+                                    <ShoppingCart /> {h.actionButton}
+                                </Button>
                             </div>
                         </div>
                     </AnimatedSection>

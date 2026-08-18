@@ -15,7 +15,7 @@ export function AboutSection() {
                 <AnimatedSection className="col-span-3" delay={0.2}>
                     <h1 className="text-secondary uppercase mb-4 text-xl">{c.headingSmall}</h1>
                     <h2 className="text-primary text-4xl mb-8">{c.heading}</h2>
-                    {c.paragraphs.map((p, i) => (
+                    {c.paragraphs!.map((p, i) => (
                         <p key={i} className=" mb-8 text-xl">{p}</p>
                     ))}
                     <Link to={'#'} className="underline text-secondary flex gap-2 items-center font-heading uppercase">Lihat Selengkapnya <ArrowRight /></Link>

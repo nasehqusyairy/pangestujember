@@ -2,9 +2,11 @@ import { ArrowRight, Clock, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "~/components/ui/card";
 import { AnimatedSection } from "../../animated-section";
-import { outlets } from "~/lib/data";
+import type { Outlet } from "~/lib/data";
 
-export function LocationSection() {
+export function LocationSection(props: {
+    outlets: Outlet[]
+}) {
     return (
         <section id="location" className="py-12">
             <div className="container mx-auto">
@@ -13,7 +15,7 @@ export function LocationSection() {
                     <h2 className="text-primary text-4xl mb-12">Oulet Kami</h2>
                 </AnimatedSection>
                 <div className="grid lg:grid-cols-3 gap-8 mb-8">
-                    {outlets.slice(0, 3).map((o, i) => (
+                    {props.outlets.map((o, i) => (
                         <AnimatedSection key={o.id} delay={0.1 * (i + 1)}>
                             <Card className="py-12 h-full">
                                 <CardHeader className="px-12">

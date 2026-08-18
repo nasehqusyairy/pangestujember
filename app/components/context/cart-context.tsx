@@ -1,14 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
-import { CART_STORAGE_KEY } from "~/lib/data";
+import { CART_STORAGE_KEY, type MenuItem } from "~/lib/data";
 
-export type CartItem = {
-  id: number;
-  img: string;
-  title: string;
-  description: string;
-  price: number;
-  quantity: number;
-};
+export type CartItem = Omit<Omit<MenuItem, 'category_id'>, 'is_favorite'> & { quantity: number }
 
 export type CartItemPayload = Omit<CartItem, "quantity">;
 
@@ -19,6 +12,8 @@ type CartContextType = {
   addItem: (item: CartItemPayload) => void;
   removeItem: (item: CartItemPayload) => void;
   setItemQuantity: (item: CartItemPayload, quantity: number) => void;
+  drawerOpen: boolean
+  setDrawerOpen: (open: boolean) => void
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -61,6 +56,7 @@ function mergeCartItem(cart: CartItem[], item: CartItemPayload, quantity: number
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
     setItems(getSavedCart());
@@ -104,6 +100,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
     addItem,
     removeItem,
     setItemQuantity,
+    drawerOpen,
+    setDrawerOpen
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

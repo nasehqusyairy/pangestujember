@@ -1,15 +1,23 @@
 import { Clock, MapPin, Phone } from "lucide-react";
 import { Jumbotron } from "~/components/jumbotron";
 import { ZoomableImage } from "~/components/image-zoom";
-import { outlets } from "~/lib/data";
+import { type Outlet } from "~/lib/data";
+import { fetchSheet } from "~/.server/utils";
 
-export default function Outlets() {
+export const loader = async () => {
+    const outlets = await fetchSheet<Outlet>('outlets')
+    return { outlets }
+}
+
+export default function Outlets(props: {
+    loaderData: Awaited<ReturnType<typeof loader>>
+}) {
     return (
         <>
             <Jumbotron title="Outlet" />
             <section className="py-8">
                 <div className="container mx-auto">
-                    {outlets.map((o) => (
+                    {props.loaderData.outlets.map((o) => (
                         <div className="grid lg:flex gap-2 lg:gap-8 items-end mb-8">
                             <iframe
                                 title={o.title}
@@ -19,7 +27,7 @@ export default function Outlets() {
                             />
                             <div className="grid gap-2">
                                 <div className="grid grid-cols-3 gap-2 mb-2">
-                                    {o.location_previews.map((src, index) => (
+                                    {o.previews.map((src, index) => (
                                         <div key={index} className="aspect-video overflow-hidden rounded">
                                             <ZoomableImage
                                                 src={src}

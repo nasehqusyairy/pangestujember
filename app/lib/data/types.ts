@@ -7,7 +7,6 @@ export type NavLink = {
 
 export type Category = {
     id: number
-    value: string
     label: string
     icon: keyof typeof LucideReact
 }
@@ -15,7 +14,8 @@ export type Category = {
 export type MenuItem = {
     id: number
     category_id: number
-    img: string
+    img_url: string
+    is_favorite: boolean
     title: string
     description: string
     price: number
@@ -27,7 +27,7 @@ export type Outlet = {
     address: string
     phone: string
     hours: string
-    location_previews: string[]
+    previews: string[]
     lat: number
     lng: number
 }
@@ -35,8 +35,8 @@ export type Outlet = {
 export type Career = {
     id: number
     title: string
-    outlet_id: number
-    time: 'Full Time' | 'Part Time' | string
+    outlet_title: string
+    is_fulltime: boolean
     description: string
     requirements: string[]
 }
