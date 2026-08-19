@@ -42,7 +42,16 @@ export function PageFooter() {
                         <ul>
                             <li>
                                 <a
-                                    href="https://wa.me/nomor-anda"
+                                    href="mailto:pangestujember@gmail.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Email
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://wa.me/6285855747776"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -51,7 +60,7 @@ export function PageFooter() {
                             </li>
                             <li>
                                 <a
-                                    href="https://instagram.com/username-anda"
+                                    href="https://www.instagram.com/pangestu.jember/"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >

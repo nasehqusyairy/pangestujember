@@ -36,7 +36,7 @@ export function CareerSection(props: {
                 </div>
                 <AnimatedSection className="text-center" delay={0.2}>
                     <p className="text-secondary underline uppercase">
-                        <Link to={'#'}>
+                        <Link to={'/careers'}>
                             Lihat Selengkapnya <ArrowRight className="inline-block" />
                         </Link>
                     </p>

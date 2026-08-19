@@ -25,13 +25,13 @@ export function TestimonySection() {
                         </AnimatedSection>
                     ))}
                 </div>
-                <AnimatedSection className="text-center" delay={0.2}>
+                {/* <AnimatedSection className="text-center" delay={0.2}>
                     <p className="text-primary-foreground underline uppercase">
                         <Link to={'#'}>
                             Lihat Selengkapnya <ArrowRight className="inline-block" />
                         </Link>
                     </p>
-                </AnimatedSection>
+                </AnimatedSection> */}
             </div>
         </section>
     )

@@ -1,6 +1,6 @@
 import { ArrowRight, Clock, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "~/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "~/components/ui/card";
 import { AnimatedSection } from "../../animated-section";
 import type { Outlet } from "~/lib/data";
 
@@ -20,12 +20,9 @@ export function LocationSection(props: {
                             <Card className="py-12 h-full">
                                 <CardHeader className="px-12">
                                     <CardTitle>{o.title}</CardTitle>
+                                    <CardDescription className="lg:text-lg">{o.address}</CardDescription>
                                 </CardHeader>
                                 <CardContent className="px-12">
-                                    <div className="flex gap-2 mb-4">
-                                        <MapPin className="text-secondary" />
-                                        <p>{o.address}</p>
-                                    </div>
                                     <div className="flex gap-2 mb-4">
                                         <Phone className="text-secondary" />
                                         <p>{o.phone}</p>
@@ -36,7 +33,13 @@ export function LocationSection(props: {
                                     </div>
                                 </CardContent>
                                 <CardFooter className="px-12 pb-12 bg-card border-0 underline">
-                                    <Link to={'#'} className="uppercase text-secondary">Lihat di Peta</Link>
+                                    <Link
+                                        to={`https://www.google.com/maps/search/?api=1&query=${o.lat},${o.lng}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="uppercase text-secondary">
+                                        Lihat di Peta
+                                    </Link>
                                 </CardFooter>
                             </Card>
                         </AnimatedSection>
@@ -44,7 +47,7 @@ export function LocationSection(props: {
                 </div>
                 <AnimatedSection className="text-center" delay={0.2}>
                     <p className="text-secondary underline uppercase">
-                        <Link to={'#'}>
+                        <Link to={'/outlets'}>
                             Lihat Selengkapnya <ArrowRight className="inline-block" />
                         </Link>
                     </p>

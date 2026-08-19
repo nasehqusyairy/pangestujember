@@ -18,7 +18,7 @@ export default function Outlets(props: {
             <section className="py-8">
                 <div className="container mx-auto">
                     {props.loaderData.outlets.map((o) => (
-                        <div className="grid lg:flex gap-2 lg:gap-8 items-end mb-8">
+                        <div className="grid lg:flex gap-2 lg:gap-8 mb-8">
                             <iframe
                                 title={o.title}
                                 src={`https://maps.google.com/maps?q=${o.lat},${o.lng}&z=15&output=embed`}
@@ -40,7 +40,6 @@ export default function Outlets(props: {
                                 </div>
                                 <h2 className="text-primary text-2xl">{o.title}</h2>
                                 <p className="flex gap-2 items-center">
-                                    <MapPin className="size-4 text-secondary" />
                                     <a
                                         href={`https://www.google.com/maps?q=${o.lat},${o.lng}`}
                                         target="_blank"
